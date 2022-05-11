@@ -22,14 +22,14 @@
                     <input class="w-full" id="product-title" type="text" />
                 </div>
                 <div class="w-full">
-                    <label class="block mb-1" for="product-qouantity">quantity</label>
-                    <input class="w-full" id="product-qouantity" type="number" />
+                    <label class="block mb-1" for="product-quantity">quantity</label>
+                    <input class="w-full" id="product-quantity" type="number" />
                 </div>
                 <div class="w-full">
                     <select class="w-72" id="categoryList">
                     </select>
                 </div>
-                <button type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
+                <button id="product-add" type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
                     add new product
                 </button>
             </form>
@@ -52,13 +52,7 @@
         </section>
         <!-- productList -->
         <section class="bg-slate-300 col-span-4">
-            <div class="flex items-center justify-between gap-x-2">
-                <div>status</div>
-                <div>name</div>
-                <div>category</div>
-                <div>quantity</div>
-                <div>date</div>
-                <div>delete</div>
+            <div id="productList" class="">
             </div>
         </section>
     </section>
