@@ -26,10 +26,7 @@
                     <input class="w-full" id="product-qouantity" type="number" />
                 </div>
                 <div class="w-full">
-                    <select class="w-72">
-                        <option>select category</option>
-                        <option>a</option>
-                        <option>b</option>
+                    <select class="w-72" id="categoryList">
                     </select>
                 </div>
                 <button type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
@@ -48,7 +45,7 @@
                     <textarea id="category-description" class="w-full"></textarea>
                 </div>
 
-                <button type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
+                <button id="category-add" type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
                     add new category
                 </button>
             </form>
@@ -65,6 +62,8 @@
             </div>
         </section>
     </section>
+
+    <script src="./src/js/app.js" type="module"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-export default class storage {
+export default class Storage {
   static getAllCategories() {
     const allCategories = JSON.parse(localStorage.getItem("category")) || [];
 
@@ -9,7 +9,7 @@ export default class storage {
   }
 
   static saveCategories(categoryToSave) {
-    const allCategory = storage.getAllCategories();
+    const allCategory = Storage.getAllCategories();
     const selectedItem = allCategory.find(
       (item) => item.id === categoryToSave.id
     );
@@ -36,7 +36,7 @@ export default class storage {
   }
 
   static saveProducts(productsToSave) {
-    const allProducts = storage.getAllProducts();
+    const allProducts = Storage.getAllProducts();
     const selectedItem = allProducts.find(
       (item) => item.id === productsToSave.id
     );
