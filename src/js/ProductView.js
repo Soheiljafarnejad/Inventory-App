@@ -5,10 +5,13 @@ const productTitle = document.querySelector("#product-title");
 const productQuantity = document.querySelector("#product-quantity");
 const addBtn = document.querySelector("#product-add");
 
+const search = document.querySelector("#search");
+
 class ProductView {
   constructor() {
     addBtn.addEventListener("click", (e) => this.addNewProduct(e));
     this.allProducts = Storage.getAllProducts();
+    this.searchItem();
   }
 
   addNewProduct(e) {
@@ -42,6 +45,16 @@ class ProductView {
       `;
     });
     productList.innerHTML = result;
+  }
+
+  searchItem() {
+    search.addEventListener("input", (e) => {
+      const filtered = Storage.getAllProducts().filter((item) =>
+        item.title.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      this.allProducts = filtered;
+      this.createProductsList();
+    });
   }
 }
 
