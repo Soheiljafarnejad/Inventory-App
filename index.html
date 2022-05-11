@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/build/tailwind.css"/>
+    <link rel="stylesheet" href="./public/build/tailwind.css" />
     <title>inventory</title>
 </head>
-<body class="bg-red-400">
-    <h1>hi!</h1>
+
+<body>
+    <header class="bg-red-200">header</header>
+    <section class="h-screen grid grid-cols-12">
+        <!-- forms -->
+        <section class="bg-slate-400 col-span-8">
+            <!-- new product -->
+            <form class="p-4 flex flex-col items-start gap-y-4 ">
+                <h2>add new product</h2>
+                <div class="w-full">
+                    <label class="block mb-1" for="product-title">product title</label>
+                    <input class="w-full" id="product-title" type="text" />
+                </div>
+                <div class="w-full">
+                    <label class="block mb-1" for="product-qouantity">quantity</label>
+                    <input class="w-full" id="product-qouantity" type="number" />
+                </div>
+                <div class="w-full">
+                    <select class="w-72">
+                        <option>select category</option>
+                        <option>a</option>
+                        <option>b</option>
+                    </select>
+                </div>
+                <button type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
+                    add new product
+                </button>
+            </form>
+            <!-- new Category -->
+            <form class="p-4 flex flex-col items-start gap-y-4 ">
+                <h2>add new category</h2>
+                <div class="w-full">
+                    <label class="block mb-1" for="category-title">category title</label>
+                    <input class="w-full" id="category-title" type="text" />
+                </div>
+                <div class="w-full">
+                    <label class="block mb-1" for="category-description">description</label>
+                    <textarea id="category-description" class="w-full"></textarea>
+                </div>
+
+                <button type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
+                    add new category
+                </button>
+            </form>
+        </section>
+        <!-- productList -->
+        <section class="bg-slate-300 col-span-4">
+            <div class="flex items-center justify-between gap-x-2">
+                <div>status</div>
+                <div>name</div>
+                <div>category</div>
+                <div>quantity</div>
+                <div>date</div>
+                <div>delete</div>
+            </div>
+        </section>
+    </section>
 </body>
+
 </html>
