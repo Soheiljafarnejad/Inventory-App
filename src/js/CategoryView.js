@@ -23,7 +23,7 @@ class CategoryView {
   }
 
   creatCategoryList() {
-    let result = `<option value="">select category</option>`;
+    let result = `<option value="">انتخاب دسته بندی</option>`;
     this.allCategories.forEach((item) => {
       result += `<option value=${item.id}>${item.title}</option>`;
     });

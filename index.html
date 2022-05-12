@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -9,63 +9,69 @@
     <title>inventory</title>
 </head>
 
-<body>
-    <header class="bg-red-200">header</header>
-    <section class="h-screen grid grid-cols-12">
-        <!-- forms -->
-        <section class="bg-slate-400 col-span-8">
-            <!-- new product -->
-            <form class="p-4 flex flex-col items-start gap-y-4 ">
-                <h2>add new product</h2>
-                <div class="w-full">
-                    <label class="block mb-1" for="product-title">product title</label>
-                    <input class="w-full" id="product-title" type="text" />
-                </div>
-                <div class="w-full">
-                    <label class="block mb-1" for="product-quantity">quantity</label>
-                    <input class="w-full" id="product-quantity" type="number" />
-                </div>
-                <div class="w-full">
-                    <select class="w-72" id="categoryList">
-                    </select>
-                </div>
-                <button id="product-add" type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
-                    add new product
-                </button>
-            </form>
-            <!-- new Category -->
-            <form class="p-4 flex flex-col items-start gap-y-4 ">
-                <h2>add new category</h2>
-                <div class="w-full">
-                    <label class="block mb-1" for="category-title">category title</label>
-                    <input class="w-full" id="category-title" type="text" />
-                </div>
-                <div class="w-full">
-                    <label class="block mb-1" for="category-description">description</label>
-                    <textarea id="category-description" class="w-full"></textarea>
-                </div>
-
-                <button id="category-add" type="submit" class="bg-slate-100 py-2 px-4 rounded-md">
-                    add new category
-                </button>
-            </form>
-        </section>
+<body class="bg-gray-100">
+    <header class="bg-red-200 mb-4">header</header>
+    <section class="grid items-center gap-x-4 grid-cols-12">
         <!-- productList -->
-        <section class="bg-slate-300 col-span-4">
+        <section class="col-span-4 self-start">
             <div>
                 <input id="search" type="text" />
             </div>
             <div>
                 <select id="sort">
-                    <option selected value="newest">Newest</option>
-                    <option value="oldest">Oldest</option>
-                    <option value="stock">Stock</option>
-                    <option value="high">High</option>
-                    <option value="low">Low</option>
+                    <option selected value="newest">جدیدترین</option>
+                    <option value="oldest">قدیمی ترین</option>
+                    <option value="stock">موجودی</option>
+                    <option value="high">الفبا آ-ی</option>
+                    <option value="low">الفبا ی-آ</option>
                 </select>
             </div>
             <div id="productList" class="">
             </div>
+        </section>
+        <!-- forms -->
+        <section class="col-span-8 px-4">
+            <!-- new product -->
+            <section class="bg-white px-10 py-4 rounded-md shadow-md mb-4">
+                <form class=" flex flex-col items-start gap-y-4">
+                    <h2 class="text-2xl font-medium">محصول جدید</h2>
+                    <div class="w-full">
+                        <label class="block mb-1" for="product-title">عنوان محصول</label>
+                        <input class="w-full rounded border-gray-300" id="product-title" type="text" />
+                    </div>
+                    <div class="w-full">
+                        <label class="block mb-1" for="product-quantity">تعداد</label>
+                        <input class="w-full rounded border-gray-300" id="product-quantity" type="number" />
+                    </div>
+                    <div class="w-full">
+                        <select class="w-72 rounded border-gray-300" id="categoryList">
+                        </select>
+                    </div>
+                    <button id="product-add" type="submit"
+                        class="bg-blue-600 text-white font-medium py-2 px-6 rounded-md">
+                        اضافه کردن
+                    </button>
+                </form>
+            </section>
+
+            <!-- new Category -->
+            <section class="bg-white px-10 py-4  rounded-md shadow-md">
+                <form class="flex flex-col items-start gap-y-4 ">
+                    <h2 class="text-2xl font-medium">دسته بندی جدید</h2>
+                    <div class="w-full">
+                        <label class="block mb-1" for="category-title">عنوان دسته بندی</label>
+                        <input class="w-full rounded border-gray-300" id="category-title" type="text" />
+                    </div>
+                    <div class="w-full">
+                        <label class="block mb-1" for="category-description">توضیحات</label>
+                        <textarea id="category-description" class="w-full rounded border-gray-300"></textarea>
+                    </div>
+
+                    <button id="category-add" type="submit"
+                        class="bg-blue-600 text-white font-medium py-2 px-6 rounded-md">
+                        اضافه کردن </button>
+                </form>
+            </section>
         </section>
     </section>
 

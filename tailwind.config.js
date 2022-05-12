@@ -1,9 +1,13 @@
 module.exports = {
   content: ["./**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['iranyekan'],
+      }
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-}
+    plugins: [
+      require('@tailwindcss/forms'),
+    ],
+};
