@@ -9,10 +9,10 @@
   </head>
 
   <body class="bg-gray-100">
-    <header class="bg-red-200 mb-4">header</header>
+    <header class="bg-red-400 mb-4">header</header>
     <section class="grid grid-cols-12 mb-8">
       <!-- productList -->
-      <section class="col-span-4 self-start px-4">
+      <section class="col-span-12 md:col-span-6 lg:col-span-4 self-start px-4 md:pl-0">
         <div>
           <input
             placeholder="جستجو..."
@@ -21,7 +21,7 @@
             type="text"
           />
         </div>
-        <div>
+        <div class="mb-4">
           <select class="rounded border-gray-300" id="sort">
             <option selected value="newest">جدیدترین</option>
             <option value="oldest">قدیمی ترین</option>
@@ -32,19 +32,19 @@
         </div>
         <div class="flex flex-col">
           <ul
-            class="flex items-center justify-between gap-x-2 w-full p-4 text-sm mb-4 text-gray-400"
+            class="grid grid-cols-12 items-center gap-x-2 w-full md:px-4 text-sm mb-4 text-gray-400"
           >
-            <li class="w-1/12 text-right">وضعیت</li>
-            <li class="w-5/12 text-right mr-4">نام و دسته بندی محصول</li>
-            <li class="w-2/12 text-center">موجودی</li>
-            <li class="w-2/12 text-center">تاریخ</li>
-            <li class="w-2/12 text-center">جزئیات</li>
+            <li class="col-span-2 text-start">وضعیت</li>
+            <li class="col-span-3 text-start">نام محصول</li>
+            <li class="col-span-2 text-start">موجودی</li>
+            <li class="col-span-2 text-center">تاریخ</li>
+            <li class="col-span-3 text-center">جزئیات</li>
           </ul>
           <div id="productList"></div>
         </div>
       </section>
       <!-- forms -->
-      <section class="col-span-8 px-4">
+      <section class="hidden md:block md:col-span-6 lg:col-span-8 px-4">
         <!-- new product -->
         <section class="bg-white px-8 py-4 rounded-md shadow-md mb-4">
           <form class="flex flex-col items-start gap-y-4">
