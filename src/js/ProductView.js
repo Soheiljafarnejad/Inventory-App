@@ -22,7 +22,7 @@ class ProductView {
     const title = productTitle.value;
     const quantity = productQuantity.value;
     const category = document.querySelector("#categoryList").value;
-    if (!category || !title || (!quantity || quantity <= 0)) return;
+    if (!category || !title || !quantity || quantity <= 0) return;
     Storage.saveProducts({ title, quantity, category });
     this.sortProduct(this.sorted);
     productTitle.value = "";
@@ -36,14 +36,41 @@ class ProductView {
         (c) => c.id === parseInt(item.category)
       );
       result += `
-      <ul class="flex items-center justify-between w-full">
-
-        <li>${item.title}</li>
-        <li>${category.title}</li>
-        <li>${item.quantity}</li>
-        <li>${date}</li>
-
-      </ul>
+      <ul
+      class="flex items-center justify-between gap-x-2 w-full bg-white p-4 rounded-lg shadow-md text-sm mb-2"
+    >
+      <li class="w-1/12 whitespace-nowrap text-ellipsis overflow-hidden ">
+      <span class="block w-3 h-3 rounded-full mx-auto ${
+        item.quantity >= 100
+          ? "bg-green-500"
+          : item.quantity >= 50
+          ? "bg-orange-400"
+          : "bg-red-600"
+      } "></span>
+      </li>
+      <li
+        class="flex flex-col items-start justify-center w-5/12 whitespace-nowrap text-right pr-4"
+      >
+        <p class="font-medium w-full text-ellipsis overflow-hidden">${
+          item.title
+        }</p>
+        <p class="text-gray-400 text-xs w-full text-ellipsis overflow-hidden">${
+          category.title
+        }</p>
+      </li>
+      <li class="w-2/12 whitespace-nowrap text-ellipsis overflow-hidden text-center">${
+        item.quantity
+      }</li>
+      <li class="w-2/12 whitespace-nowrap text-ellipsis overflow-hidden text-left ">${date}</li>
+      <li class="w-2/12 text-center">
+        <button
+        data-id=${item.id}
+          class="border w-full border-red-500 py-1.5 px-2 rounded-md text-xs text-red-500 bg-white"
+        >
+          حذف
+        </button>
+      </li>
+    </ul>
       `;
     });
     productList.innerHTML = result;

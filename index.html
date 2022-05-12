@@ -1,81 +1,126 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./public/build/tailwind.css" />
     <title>inventory</title>
-</head>
+  </head>
 
-<body class="bg-gray-100">
+  <body class="bg-gray-100">
     <header class="bg-red-200 mb-4">header</header>
-    <section class="grid items-center gap-x-4 grid-cols-12">
-        <!-- productList -->
-        <section class="col-span-4 self-start">
-            <div>
-                <input id="search" type="text" />
+    <section class="grid grid-cols-12 mb-8">
+      <!-- productList -->
+      <section class="col-span-4 self-start px-4">
+        <div>
+          <input
+            placeholder="جستجو..."
+            class="rounded border-gray-300"
+            id="search"
+            type="text"
+          />
+        </div>
+        <div>
+          <select class="rounded border-gray-300" id="sort">
+            <option selected value="newest">جدیدترین</option>
+            <option value="oldest">قدیمی ترین</option>
+            <option value="stock">موجودی</option>
+            <option value="high">الفبا آ-ی</option>
+            <option value="low">الفبا ی-آ</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <ul
+            class="flex items-center justify-between gap-x-2 w-full p-4 text-sm mb-4 text-gray-400"
+          >
+            <li class="w-1/12 text-right">وضعیت</li>
+            <li class="w-5/12 text-right mr-4">نام و دسته بندی محصول</li>
+            <li class="w-2/12 text-center">موجودی</li>
+            <li class="w-2/12 text-center">تاریخ</li>
+            <li class="w-2/12 text-center">جزئیات</li>
+          </ul>
+          <div id="productList"></div>
+        </div>
+      </section>
+      <!-- forms -->
+      <section class="col-span-8 px-4">
+        <!-- new product -->
+        <section class="bg-white px-8 py-4 rounded-md shadow-md mb-4">
+          <form class="flex flex-col items-start gap-y-4">
+            <h2 class="text-2xl font-medium">محصول جدید</h2>
+            <div class="w-full">
+              <label class="block mb-1 text-gray-500" for="product-title"
+                >عنوان محصول</label
+              >
+              <input
+                class="w-full rounded border-gray-300"
+                id="product-title"
+                type="text"
+              />
             </div>
-            <div>
-                <select id="sort">
-                    <option selected value="newest">جدیدترین</option>
-                    <option value="oldest">قدیمی ترین</option>
-                    <option value="stock">موجودی</option>
-                    <option value="high">الفبا آ-ی</option>
-                    <option value="low">الفبا ی-آ</option>
-                </select>
+            <div class="w-full">
+              <label class="block mb-1 text-gray-500" for="product-quantity"
+                >تعداد</label
+              >
+              <input
+                class="w-full rounded border-gray-300"
+                id="product-quantity"
+                type="number"
+              />
             </div>
-            <div id="productList" class="">
+            <div class="w-full">
+              <select
+                class="w-72 rounded border-gray-300"
+                id="categoryList"
+              ></select>
             </div>
+            <button
+              id="product-add"
+              type="submit"
+              class="bg-blue-500 text-white py-2 px-6 rounded-md"
+            >
+              اضافه کردن
+            </button>
+          </form>
         </section>
-        <!-- forms -->
-        <section class="col-span-8 px-4">
-            <!-- new product -->
-            <section class="bg-white px-10 py-4 rounded-md shadow-md mb-4">
-                <form class=" flex flex-col items-start gap-y-4">
-                    <h2 class="text-2xl font-medium">محصول جدید</h2>
-                    <div class="w-full">
-                        <label class="block mb-1" for="product-title">عنوان محصول</label>
-                        <input class="w-full rounded border-gray-300" id="product-title" type="text" />
-                    </div>
-                    <div class="w-full">
-                        <label class="block mb-1" for="product-quantity">تعداد</label>
-                        <input class="w-full rounded border-gray-300" id="product-quantity" type="number" />
-                    </div>
-                    <div class="w-full">
-                        <select class="w-72 rounded border-gray-300" id="categoryList">
-                        </select>
-                    </div>
-                    <button id="product-add" type="submit"
-                        class="bg-blue-600 text-white font-medium py-2 px-6 rounded-md">
-                        اضافه کردن
-                    </button>
-                </form>
-            </section>
 
-            <!-- new Category -->
-            <section class="bg-white px-10 py-4  rounded-md shadow-md">
-                <form class="flex flex-col items-start gap-y-4 ">
-                    <h2 class="text-2xl font-medium">دسته بندی جدید</h2>
-                    <div class="w-full">
-                        <label class="block mb-1" for="category-title">عنوان دسته بندی</label>
-                        <input class="w-full rounded border-gray-300" id="category-title" type="text" />
-                    </div>
-                    <div class="w-full">
-                        <label class="block mb-1" for="category-description">توضیحات</label>
-                        <textarea id="category-description" class="w-full rounded border-gray-300"></textarea>
-                    </div>
+        <!-- new Category -->
+        <section class="bg-white px-8 py-4 rounded-md shadow-md">
+          <form class="flex flex-col items-start gap-y-4">
+            <h2 class="text-2xl font-medium">دسته بندی جدید</h2>
+            <div class="w-full">
+              <label class="block mb-1 text-gray-500" for="category-title"
+                >عنوان دسته بندی</label
+              >
+              <input
+                class="w-full rounded border-gray-300"
+                id="category-title"
+                type="text"
+              />
+            </div>
+            <div class="w-full">
+              <label class="block mb-1 text-gray-500" for="category-description"
+                >توضیحات</label
+              >
+              <textarea
+                id="category-description"
+                class="w-full rounded border-gray-300"
+              ></textarea>
+            </div>
 
-                    <button id="category-add" type="submit"
-                        class="bg-blue-600 text-white font-medium py-2 px-6 rounded-md">
-                        اضافه کردن </button>
-                </form>
-            </section>
+            <button
+              id="category-add"
+              type="submit"
+              class="bg-blue-500 text-white py-2 px-6 rounded-md"
+            >
+              اضافه کردن
+            </button>
+          </form>
         </section>
+      </section>
     </section>
 
     <script src="./src/js/app.js" type="module"></script>
-</body>
-
+  </body>
 </html>
