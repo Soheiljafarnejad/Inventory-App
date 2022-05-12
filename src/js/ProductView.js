@@ -28,6 +28,7 @@ class ProductView {
     productTitle.value = "";
     productQuantity.value = "";
   }
+
   createProductsList() {
     let result = "";
     this.allProducts.forEach((item) => {
@@ -65,7 +66,7 @@ class ProductView {
       <li class="w-2/12 text-center">
         <button
         data-id=${item.id}
-          class="border w-full border-red-500 py-1.5 px-2 rounded-md text-xs text-red-500 bg-white"
+          class="delete-product border w-full border-red-500 py-1.5 px-2 rounded-md text-xs text-red-500 bg-white"
         >
           حذف
         </button>
@@ -74,6 +75,7 @@ class ProductView {
       `;
     });
     productList.innerHTML = result;
+    this.deleteProduct();
   }
 
   searchProduct(value) {
@@ -125,6 +127,16 @@ class ProductView {
     }
     this.createProductsList();
     this.sorted = value;
+  }
+
+  deleteProduct() {
+    const deleteBtns = [...document.querySelectorAll(".delete-product")];
+    deleteBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        Storage.deleteProducts(e.target.dataset.id);
+        this.sortProduct(this.sorted);
+      });
+    });
   }
 }
 
