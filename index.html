@@ -9,69 +9,97 @@
   </head>
 
   <body class="bg-gray-100">
-    <header class="bg-red-400 mb-4">header</header>
-    <section class="grid grid-cols-12 mb-8">
+    <section class="grid grid-cols-12 my-4">
       <!-- productList -->
-      <section class="col-span-12 md:col-span-6 lg:col-span-4 self-start px-4 md:pl-0">
-        <div>
-          <input
-            placeholder="جستجو..."
-            class="rounded border-gray-300"
-            id="search"
-            type="text"
-          />
-        </div>
-        <div class="mb-4">
-          <select class="rounded border-gray-300" id="sort">
-            <option selected value="newest">جدیدترین</option>
-            <option value="oldest">قدیمی ترین</option>
-            <option value="stock">موجودی</option>
-            <option value="high">الفبا آ-ی</option>
-            <option value="low">الفبا ی-آ</option>
-          </select>
+      <section
+        class="col-span-12 md:col-span-6 lg:col-span-4 self-start px-4 md:pl-0"
+      >
+        <div class="flex items-center justify-between w-full mb-4">
+          <div class="w-full flex-1 flex items-center justify-start">
+            <button
+              class="p-3  text-sm rounded-full bg-blue-500 text-white md:hidden"
+              id="form-toggle"
+            >
+              اضافه کردن
+            </button>
+
+            <div
+              id="search-box"
+              class="flex-1 flex items-center justify-start mx-2 rounded-md"
+            >
+              <span
+                class="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full cursor-pointer"
+                id="search-toggle"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 stroke-gray-800"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </span>
+
+              <input
+                placeholder="جستجو..."
+                class="flex-1 w-full hidden border-0 outline-none ring-0 bg-gray-200 focus:bg-gray-200 focus:ring-0 focus:border-0 px-0 pl-2"
+                id="search"
+                type="text"
+              />
+            </div>
+          </div>
+          <!-- sort -->
+          <div>
+            <select class="focus:ring-0 focus:border-0" id="sort">
+              <option selected value="newest">جدیدترین</option>
+              <option value="oldest">قدیمی ترین</option>
+              <option value="stock">موجودی</option>
+              <option value="high">الفبا آ-ی</option>
+              <option value="low">الفبا ی-آ</option>
+            </select>
+          </div>
         </div>
         <div class="flex flex-col">
           <ul
-            class="grid grid-cols-12 items-center gap-x-2 w-full md:px-4 text-sm mb-4 text-gray-400"
+            class="grid grid-cols-12 items-center gap-x-2 w-full text-sm mb-4 text-gray-400"
           >
-            <li class="col-span-2 text-start">وضعیت</li>
-            <li class="col-span-3 text-start">نام محصول</li>
-            <li class="col-span-2 text-start">موجودی</li>
-            <li class="col-span-2 text-center">تاریخ</li>
-            <li class="col-span-3 text-center">جزئیات</li>
+            <li class="col-span-2 text-start whitespace-nowrap">وضعیت</li>
+            <li class="col-span-3 text-start whitespace-nowrap">نام محصول</li>
+            <li class="col-span-2 text-center whitespace-nowrap">موجودی</li>
+            <li class="col-span-3 text-center whitespace-nowrap">تاریخ</li>
+            <li class="col-span-2 text-center whitespace-nowrap">جزئیات</li>
           </ul>
           <div id="productList"></div>
         </div>
       </section>
       <!-- forms -->
-      <section class="hidden md:block md:col-span-6 lg:col-span-8 px-4">
+      <section class="md:col-span-6 lg:col-span-8 px-4">
         <!-- new product -->
-        <section class="bg-white px-8 py-4 rounded-md shadow-md mb-4">
+        <section id="form-product" class="hidden md:block bg-white px-10 py-6 rounded-md shadow-md mb-6">
           <form class="flex flex-col items-start gap-y-4">
-            <h2 class="text-2xl font-medium">محصول جدید</h2>
+            <h2 class="text-xl mb-2 font-medium">محصول جدید</h2>
             <div class="w-full">
-              <label class="block mb-1 text-gray-500" for="product-title"
+              <label class="text-sm block mb-1 text-gray-500" for="product-title"
                 >عنوان محصول</label
               >
-              <input
-                class="w-full rounded border-gray-300"
-                id="product-title"
-                type="text"
-              />
+              <input class="w-full" id="product-title" type="text" />
             </div>
             <div class="w-full">
-              <label class="block mb-1 text-gray-500" for="product-quantity"
+              <label class="text-sm block mb-1 text-gray-500" for="product-quantity"
                 >تعداد</label
               >
-              <input
-                class="w-full rounded border-gray-300"
-                id="product-quantity"
-                type="number"
-              />
+              <input class="w-full" id="product-quantity" type="tel" />
             </div>
             <div class="w-full">
               <select
-                class="w-72 rounded border-gray-300"
+                class="w-72 bg-white border border-gray-200"
                 id="categoryList"
               ></select>
             </div>
@@ -86,27 +114,20 @@
         </section>
 
         <!-- new Category -->
-        <section class="bg-white px-8 py-4 rounded-md shadow-md">
+        <section  id="form-category" class="hidden md:block bg-white px-10 py-6 rounded-md shadow-md">
           <form class="flex flex-col items-start gap-y-4">
-            <h2 class="text-2xl font-medium">دسته بندی جدید</h2>
+            <h2 class="text-xl mb-2 font-medium">دسته بندی جدید</h2>
             <div class="w-full">
-              <label class="block mb-1 text-gray-500" for="category-title"
+              <label class="text-sm block mb-1 text-gray-500" for="category-title"
                 >عنوان دسته بندی</label
               >
-              <input
-                class="w-full rounded border-gray-300"
-                id="category-title"
-                type="text"
-              />
+              <input class="w-full" id="category-title" type="text" />
             </div>
             <div class="w-full">
-              <label class="block mb-1 text-gray-500" for="category-description"
+              <label class="text-sm block mb-1 text-gray-500" for="category-description"
                 >توضیحات</label
               >
-              <textarea
-                id="category-description"
-                class="w-full rounded border-gray-300"
-              ></textarea>
+              <textarea id="category-description" class="w-full"></textarea>
             </div>
 
             <button

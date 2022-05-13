@@ -1,4 +1,26 @@
-@import url("/src/font/styles/fonts.css");
+@import url(/src/font/styles/fonts.css);
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea {
+    @apply rounded-md border-gray-200 w-auto transition-all duration-200 focus:border-blue-500 focus:ring-blue-500 py-2 text-sm md:text-base;
+  }
+  select {
+    @apply rounded-md border-gray-200 w-auto transition-all duration-200 border-0 outline-none ring-0 bg-gray-200 focus:bg-white py-2 text-sm md:text-base;
+  }
+}

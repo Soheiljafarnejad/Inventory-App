@@ -5,8 +5,12 @@ const productTitle = document.querySelector("#product-title");
 const productQuantity = document.querySelector("#product-quantity");
 const addBtn = document.querySelector("#product-add");
 
+const searchBox = document.querySelector("#search-box");
+const searchToggle = document.querySelector("#search-toggle");
 const search = document.querySelector("#search");
 const sort = document.querySelector("#sort");
+
+const formToggle = document.querySelector("#form-toggle");
 
 class ProductView {
   constructor() {
@@ -15,6 +19,8 @@ class ProductView {
     this.sorted = "newest";
     search.addEventListener("input", (e) => this.searchProduct(e.target.value));
     sort.addEventListener("change", (e) => this.sortProduct(e.target.value));
+    searchToggle.addEventListener("click", this.searchToggleHandler);
+    formToggle.addEventListener("click",this.formToggleHandler)
   }
 
   addNewProduct(e) {
@@ -40,8 +46,8 @@ class ProductView {
       <ul
       class="grid grid-cols-12 items-center gap-x-2 w-full bg-white py-4 px-2 rounded-lg shadow-md text-sm mb-2"
     >
-      <li class="col-span-1 whitespace-nowrap text-ellipsis overflow-hidden ">
-      <span class="block w-3 h-3 rounded-full mx-auto ${
+      <li class="col-span-2 whitespace-nowrap text-ellipsis overflow-hidden ">
+      <span class="block w-3 h-3 rounded-full md:mx-2 ${
         item.quantity >= 100
           ? "bg-green-500"
           : item.quantity >= 50
@@ -50,7 +56,7 @@ class ProductView {
       } "></span>
       </li>
       <li
-        class="col-span-4 flex flex-col items-start justify-center text-right pr-4"
+        class="col-span-3 flex flex-col items-start justify-center text-right"
       >
         <p class="font-medium w-full text-ellipsis overflow-hidden whitespace-nowrap">${
           item.title
@@ -59,14 +65,14 @@ class ProductView {
           category.title
         }</p>
       </li>
-      <li class="col-span-1 whitespace-nowrap text-ellipsis overflow-hidden text-center">${
+      <li class="col-span-2 whitespace-nowrap text-ellipsis overflow-hidden text-center">${
         item.quantity
       }</li>
-      <li class="col-span-3 whitespace-nowrap text-ellipsis overflow-hidden text-left ">${date}</li>
-      <li class="col-span-3 text-center">
+      <li class="col-span-3 whitespace-nowrap text-ellipsis overflow-hidden text-center ">${date}</li>
+      <li class="col-span-2 text-center">
         <button
         data-id=${item.id}
-          class="delete-product border border-red-500 py-1.5 px-4 rounded-md text-xs text-red-500 bg-white"
+          class="delete-product border border-red-500 py-1.5 px-2 rounded-md text-xs text-red-500 bg-white"
         >
           حذف
         </button>
@@ -76,6 +82,18 @@ class ProductView {
     });
     productList.innerHTML = result;
     this.deleteProduct();
+  }
+
+  formToggleHandler(){
+    
+  }
+
+
+  searchToggleHandler() {
+    search.classList.toggle("hidden");
+    search.classList.toggle("block");
+    searchBox.classList.toggle("bg-gray-200");
+    search.focus();
   }
 
   searchProduct(value) {
