@@ -1,17 +1,13 @@
 import Storage from "./Storage.js";
+import Toggle from "./Toggle.js";
 
 const productList = document.querySelector("#productList");
 const productTitle = document.querySelector("#product-title");
 const productQuantity = document.querySelector("#product-quantity");
 const addBtn = document.querySelector("#product-add");
 
-const searchBox = document.querySelector("#search-box");
-const searchToggle = document.querySelector("#search-toggle");
 const search = document.querySelector("#search");
 const sort = document.querySelector("#sort");
-
-const formToggle = document.querySelector("#form-toggle");
-
 class ProductView {
   constructor() {
     addBtn.addEventListener("click", (e) => this.addNewProduct(e));
@@ -19,8 +15,6 @@ class ProductView {
     this.sorted = "newest";
     search.addEventListener("input", (e) => this.searchProduct(e.target.value));
     sort.addEventListener("change", (e) => this.sortProduct(e.target.value));
-    searchToggle.addEventListener("click", this.searchToggleHandler);
-    formToggle.addEventListener("click",this.formToggleHandler)
   }
 
   addNewProduct(e) {
@@ -28,8 +22,19 @@ class ProductView {
     const title = productTitle.value;
     const quantity = productQuantity.value;
     const category = document.querySelector("#categoryList").value;
-    if (!category || !title || !quantity || quantity <= 0) return;
+    if (!title) {
+      productTitle.focus();
+      return;
+    } else if (!quantity || quantity <= 0) {
+      productQuantity.focus();
+      return;
+    } else if (!category) {
+      document.querySelector("#categoryList").focus();
+      return;
+    }
+
     Storage.saveProducts({ title, quantity, category });
+    Toggle.exitProduct();
     this.sortProduct(this.sorted);
     productTitle.value = "";
     productQuantity.value = "";
@@ -82,18 +87,6 @@ class ProductView {
     });
     productList.innerHTML = result;
     this.deleteProduct();
-  }
-
-  formToggleHandler(){
-    
-  }
-
-
-  searchToggleHandler() {
-    search.classList.toggle("hidden");
-    search.classList.toggle("block");
-    searchBox.classList.toggle("bg-gray-200");
-    search.focus();
   }
 
   searchProduct(value) {

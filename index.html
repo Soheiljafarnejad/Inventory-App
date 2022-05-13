@@ -17,8 +17,8 @@
         <div class="flex items-center justify-between w-full mb-4">
           <div class="w-full flex-1 flex items-center justify-start">
             <button
-              class="p-3  text-sm rounded-full bg-blue-500 text-white md:hidden"
-              id="form-toggle"
+              class="p-3 text-sm rounded-full bg-blue-500 text-white md:hidden"
+              id="product-toggle"
             >
               اضافه کردن
             </button>
@@ -80,33 +80,57 @@
         </div>
       </section>
       <!-- forms -->
-      <section class="md:col-span-6 lg:col-span-8 px-4">
+      <section class="col-span-12 md:col-span-6 lg:col-span-8 px-4">
         <!-- new product -->
-        <section id="form-product" class="hidden md:block bg-white px-10 py-6 rounded-md shadow-md mb-6">
+        <section
+          id="form-product"
+          class="hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white p-10 md:py-6 rounded-md shadow-md md:mb-4"
+        >
+        <span id="exit-form-product" class="cursor-pointer flex items-center justify-center md:hidden absolute top-2 right-2 w-7 h-7 rounded-full bg-gray-200">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 stroke-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </span>
           <form class="flex flex-col items-start gap-y-4">
             <h2 class="text-xl mb-2 font-medium">محصول جدید</h2>
             <div class="w-full">
-              <label class="text-sm block mb-1 text-gray-500" for="product-title"
+              <label
+                class="text-sm block mb-1 text-gray-500"
+                for="product-title"
                 >عنوان محصول</label
               >
               <input class="w-full" id="product-title" type="text" />
             </div>
             <div class="w-full">
-              <label class="text-sm block mb-1 text-gray-500" for="product-quantity"
+              <label
+                class="text-sm block mb-1 text-gray-500"
+                for="product-quantity"
                 >تعداد</label
               >
               <input class="w-full" id="product-quantity" type="tel" />
             </div>
             <div class="w-full">
               <select
-                class="w-72 bg-white border border-gray-200"
+                class="w-full md:w-72 bg-white border border-gray-200"
                 id="categoryList"
               ></select>
             </div>
+            <p class="cursor-pointer md:hidden self-end text-sm text-blue-500" id="category-toggle">دسته بندی جدید</p>
             <button
               id="product-add"
               type="submit"
-              class="bg-blue-500 text-white py-2 px-6 rounded-md"
+              class="bg-blue-500 text-sm md:text-base text-white py-2 px-6 rounded-md"
             >
               اضافه کردن
             </button>
@@ -114,17 +138,40 @@
         </section>
 
         <!-- new Category -->
-        <section  id="form-category" class="hidden md:block bg-white px-10 py-6 rounded-md shadow-md">
+        <section
+          id="form-category"
+          class="hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white p-10 md:py-6 rounded-md shadow-md"
+        >
+        <span id="exit-form-category" class="cursor-pointer flex items-center justify-center md:hidden absolute top-2 right-2 w-7 h-7 rounded-full bg-gray-200">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 stroke-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </span>
           <form class="flex flex-col items-start gap-y-4">
             <h2 class="text-xl mb-2 font-medium">دسته بندی جدید</h2>
             <div class="w-full">
-              <label class="text-sm block mb-1 text-gray-500" for="category-title"
+              <label
+                class="text-sm block mb-1 text-gray-500"
+                for="category-title"
                 >عنوان دسته بندی</label
               >
               <input class="w-full" id="category-title" type="text" />
             </div>
             <div class="w-full">
-              <label class="text-sm block mb-1 text-gray-500" for="category-description"
+              <label
+                class="text-sm block mb-1 text-gray-500"
+                for="category-description"
                 >توضیحات</label
               >
               <textarea id="category-description" class="w-full"></textarea>
@@ -133,12 +180,13 @@
             <button
               id="category-add"
               type="submit"
-              class="bg-blue-500 text-white py-2 px-6 rounded-md"
+              class="bg-blue-500 text-sm md:text-base text-white py-2 px-6 rounded-md"
             >
               اضافه کردن
             </button>
           </form>
         </section>
+
       </section>
     </section>
 

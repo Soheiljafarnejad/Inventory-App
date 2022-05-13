@@ -1,4 +1,5 @@
 import Storage from "./Storage.js";
+import Toggle from "./Toggle.js";
 
 const categoryList = document.querySelector("#categoryList");
 const categoryTitle = document.querySelector("#category-title");
@@ -14,10 +15,15 @@ class CategoryView {
     e.preventDefault();
     const title = categoryTitle.value;
     const description = categoryDescription.value;
-    if (!title || !description) return;
+    if (!title) {
+      categoryTitle.focus()
+      return;
+    }
     Storage.saveCategories({ title, description });
+    Toggle.exitCategory()
     this.allCategories = Storage.getAllCategories();
     this.creatCategoryList();
+    categoryList.focus()
     categoryTitle.value = "";
     categoryDescription.value = "";
   }
