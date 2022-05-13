@@ -52,7 +52,7 @@ class ProductView {
       class="grid grid-cols-12 items-center gap-x-2 w-full bg-white py-4 px-2 rounded-lg shadow-md text-sm mb-2"
     >
       <li class="col-span-2 whitespace-nowrap text-ellipsis overflow-hidden ">
-      <span class="block w-3 h-3 rounded-full md:mx-2 ${
+      <span class="block w-3 h-3 rounded-full mr-0.5 md:mx-2 ${
         item.quantity >= 100
           ? "bg-green-500"
           : item.quantity >= 50
@@ -77,7 +77,7 @@ class ProductView {
       <li class="col-span-2 text-center">
         <button
         data-id=${item.id}
-          class="delete-product border border-red-500 py-1.5 px-2 rounded-md text-xs text-red-500 bg-white"
+          class="delete-product border border-red-500 py-1.5 px-2 ml-0.5 md:m-0 rounded-md text-xs text-red-500 bg-white"
         >
           حذف
         </button>

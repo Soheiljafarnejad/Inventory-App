@@ -84,9 +84,9 @@
         <!-- new product -->
         <section
           id="form-product"
-          class="hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white p-10 md:py-6 rounded-md shadow-md md:mb-4"
+          class="overflow-auto min-h-screen md:min-h-0 hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white px-10 py-14 md:py-6 rounded-md shadow-md md:mb-4"
         >
-        <span id="exit-form-product" class="cursor-pointer flex items-center justify-center md:hidden absolute top-2 right-2 w-7 h-7 rounded-full bg-gray-200">
+        <span id="exit-form-product" class="cursor-pointer flex items-center justify-center md:hidden absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5 stroke-gray-500"
@@ -118,7 +118,7 @@
                 for="product-quantity"
                 >تعداد</label
               >
-              <input class="w-full" id="product-quantity" type="tel" />
+              <input class="w-full" min="1" inputmode="numeric" id="product-quantity" type="number" />
             </div>
             <div class="w-full">
               <select
@@ -130,7 +130,7 @@
             <button
               id="product-add"
               type="submit"
-              class="bg-blue-500 text-sm md:text-base text-white py-2 px-6 rounded-md"
+              class="bg-blue-500 text-sm md:text-base text-white py-3 md:py-2 px-6 rounded-md"
             >
               اضافه کردن
             </button>
@@ -140,9 +140,9 @@
         <!-- new Category -->
         <section
           id="form-category"
-          class="hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white p-10 md:py-6 rounded-md shadow-md"
+          class="overflow-auto min-h-screen md:min-h-0 hidden bottom-0 top-0 left-0 right-0 z-10 md:block md:static bg-white px-10 py-14 md:py-6 rounded-md shadow-md"
         >
-        <span id="exit-form-category" class="cursor-pointer flex items-center justify-center md:hidden absolute top-2 right-2 w-7 h-7 rounded-full bg-gray-200">
+        <span id="exit-form-category" class="cursor-pointer flex items-center justify-center md:hidden absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5 stroke-gray-500"
@@ -180,7 +180,7 @@
             <button
               id="category-add"
               type="submit"
-              class="bg-blue-500 text-sm md:text-base text-white py-2 px-6 rounded-md"
+              class="bg-blue-500 text-sm md:text-base text-white py-3 md:py-2 px-6 rounded-md"
             >
               اضافه کردن
             </button>
