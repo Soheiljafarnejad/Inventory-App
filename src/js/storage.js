@@ -25,6 +25,12 @@ export default class Storage {
     localStorage.setItem("category", JSON.stringify(allCategory));
   }
 
+  static deleteCategories(id) {
+    const allCategories = Storage.getAllCategories();
+    const deleted = allCategories.filter((item) => item.id !== parseInt(id));
+    localStorage.setItem("category", JSON.stringify(deleted));
+  }
+
   static getAllProducts() {
     const allProducts = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -53,6 +59,11 @@ export default class Storage {
   static deleteProducts(id) {
     const allProducts = Storage.getAllProducts();
     const deleted = allProducts.filter((item) => item.id !== parseInt(id));
+    localStorage.setItem("products", JSON.stringify(deleted));
+  }
+  static deleteCategoryProducts(id) {
+    const allProducts = Storage.getAllProducts();
+    const deleted = allProducts.filter((item) => parseInt(item.category) !== parseInt(id));
     localStorage.setItem("products", JSON.stringify(deleted));
   }
 }
