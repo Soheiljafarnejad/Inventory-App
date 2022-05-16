@@ -11,12 +11,11 @@ export default class Storage {
   static saveCategories(categoryToSave) {
     const allCategory = Storage.getAllCategories();
     const selectedItem = allCategory.find(
-      (item) => item.id === categoryToSave.id
+      (item) => item.id === parseInt(categoryToSave.id)
     );
     if (selectedItem) {
       selectedItem.title = categoryToSave.title;
       selectedItem.description = categoryToSave.description;
-      selectedItem.updated = new Date().toISOString();
     } else {
       categoryToSave.id = new Date().getTime();
       categoryToSave.updated = new Date().toISOString();
@@ -38,12 +37,12 @@ export default class Storage {
   static saveProducts(productsToSave) {
     const allProducts = Storage.getAllProducts();
     const selectedItem = allProducts.find(
-      (item) => item.id === productsToSave.id
+      (item) => item.id === parseInt(productsToSave.id)
     );
     if (selectedItem) {
       selectedItem.title = productsToSave.title;
       selectedItem.quantity = productsToSave.quantity;
-      selectedItem.updated = new Date().toISOString();
+      selectedItem.category = productsToSave.category;
     } else {
       productsToSave.id = new Date().getTime();
       productsToSave.updated = new Date().toISOString();

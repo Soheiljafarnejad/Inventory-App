@@ -16,14 +16,14 @@ class CategoryView {
     const title = categoryTitle.value;
     const description = categoryDescription.value;
     if (!title) {
-      categoryTitle.focus()
+      categoryTitle.focus();
       return;
     }
     Storage.saveCategories({ title, description });
-    Toggle.exitCategory()
+    Toggle.exitCategory();
     this.allCategories = Storage.getAllCategories();
     this.creatCategoryList();
-    categoryList.focus()
+    categoryList.focus();
     categoryTitle.value = "";
     categoryDescription.value = "";
   }

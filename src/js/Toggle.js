@@ -1,3 +1,5 @@
+import ProductView from "./ProductView.js";
+
 const searchBox = document.querySelector("#search-box");
 const searchToggle = document.querySelector("#search-toggle");
 
@@ -36,10 +38,11 @@ class Toggle {
     formProduct.classList.add("fixed");
     document.querySelector("#product-title").focus();
   };
-
+  
   exitProduct = () => {
     formProduct.classList.add("hidden");
     formProduct.classList.remove("fixed");
+    ProductView.resetProductForm();
   };
 
   // category form toggle
