@@ -57,7 +57,7 @@
           </div>
           <!-- sort -->
           <div>
-            <select class="focus:ring-0 focus:border-0" id="sort">
+            <select id="sort">
               <option selected value="newest">جدیدترین</option>
               <option value="oldest">قدیمی ترین</option>
               <option value="stock">موجودی</option>
@@ -156,7 +156,10 @@
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                  <p id="categoryOptionTitle"></p>
+                  <p
+                    id="categoryOptionTitle"
+                    class="whitespace-nowrap text-ellipsis overflow-hidden w-full"
+                  ></p>
                 </div>
                 <ul
                   data-id=""
@@ -207,7 +210,9 @@
             </svg>
           </span>
           <form class="flex flex-col items-start gap-y-4">
-            <h2 id="categoryFrom-title" class="text-xl mb-2 font-medium">دسته بندی جدید</h2>
+            <h2 id="categoryFrom-title" class="text-xl mb-2 font-medium">
+              دسته بندی جدید
+            </h2>
             <div class="w-full">
               <label
                 class="text-sm block mb-1 text-gray-500"

@@ -32,7 +32,9 @@ class ProductView {
     } else if (!quantity || quantity <= 0) {
       productQuantity.focus();
       return;
-    } else if (!category || category === "null") return;
+    } else if (!category || category === "null") {
+      return;
+    }
 
     if (this.EditId)
       Storage.saveProducts({ title, quantity, category, id: this.EditId });
@@ -63,7 +65,7 @@ class ProductView {
       class="grid grid-cols-12 items-center gap-x-2 w-full bg-white py-4 px-2 rounded-md shadow-md text-sm mb-2"
     >
       <li class="col-span-2 whitespace-nowrap text-ellipsis overflow-hidden ">
-      <span class="block w-3 h-3 rounded-full mr-0.5 md:mx-2 ${
+      <span class="block w-3 h-3 rounded-full mr-3 md:mx-2 ${
         item.quantity >= 100
           ? "bg-green-500"
           : item.quantity >= 50
@@ -146,7 +148,7 @@ class ProductView {
     const filtered = Storage.getAllProducts().filter((item) =>
       item.title.toLowerCase().includes(value.toLowerCase())
     );
-    this.sortProduct(filtered);
+    this.sortProduct(this.sorted, filtered);
   }
 
   sortProduct(value = this.sorted, products = Storage.getAllProducts()) {
@@ -189,7 +191,6 @@ class ProductView {
       default:
         break;
     }
-    this.allProducts = Storage.getAllProducts();
     this.createProductsList();
     this.sorted = value;
   }
@@ -198,7 +199,8 @@ class ProductView {
     const deleteBtns = [...document.querySelectorAll(".delete-product")];
     deleteBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        Storage.deleteProducts(e.currentTarget.dataset.id);
+        const id = parseInt(e.currentTarget.dataset.id);
+        Storage.deleteProducts(id);
         this.sortProduct();
       });
     });
@@ -208,10 +210,8 @@ class ProductView {
     const editBtns = [...document.querySelectorAll(".edit-product")];
     editBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const id = e.currentTarget.dataset.id;
-        const selected = this.allProducts.find(
-          (item) => item.id === parseInt(id)
-        );
+        const id = parseInt(e.currentTarget.dataset.id);
+        const selected = this.allProducts.find((item) => item.id === id);
         productTitle.value = selected.title;
         productQuantity.value = selected.quantity;
         categoryList.dataset.id = selected.category;

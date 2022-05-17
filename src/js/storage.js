@@ -63,7 +63,9 @@ export default class Storage {
   }
   static deleteCategoryProducts(id) {
     const allProducts = Storage.getAllProducts();
-    const deleted = allProducts.filter((item) => parseInt(item.category) !== parseInt(id));
+    const deleted = allProducts.filter(
+      (item) => parseInt(item.category) !== parseInt(id)
+    );
     localStorage.setItem("products", JSON.stringify(deleted));
   }
 }

@@ -51,7 +51,7 @@ class CategoryView {
       @click="open = false"
       class="categoryOptions w-full p-2 cursor-pointer hover:bg-gray-50 border border-t-0 border-gray-200 flex items-center justify-between" 
       data-id=${item.id}>
-      <p>${item.title}</p>
+      <p class="whitespace-nowrap text-ellipsis overflow-hidden w-full">${item.title}</p>
       <div class="flex items-center gap-x-2">
       <span data-id=${item.id} class="edit-category">  
       <svg
@@ -98,17 +98,15 @@ class CategoryView {
     const allOptions = [...document.querySelectorAll(".categoryOptions")];
     allOptions.forEach((option) => {
       option.addEventListener("click", (e) => {
-        const id = e.currentTarget.dataset.id;
+        const id = parseInt(e.currentTarget.dataset.id);
         categoryList.dataset.id = id;
         this.checkedOption();
       });
     });
   }
   checkedOption() {
-    const id = categoryList.dataset.id;
-    const selected = this.allCategories.find(
-      (item) => item.id === parseInt(id)
-    );
+    const id = parseInt(categoryList.dataset.id);
+    const selected = this.allCategories.find((item) => item.id === id);
     if (selected) {
       categoryOptionTitle.innerText = selected.title;
     } else {
@@ -120,7 +118,7 @@ class CategoryView {
     deleteBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const id = e.currentTarget.dataset.id;
+        const id = parseInt(e.currentTarget.dataset.id);
         Storage.deleteCategoryProducts(id);
         Storage.deleteCategories(id);
         categoryList.dataset.id = null;
@@ -137,10 +135,8 @@ class CategoryView {
     editBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const id = e.currentTarget.dataset.id;
-        const selected = this.allCategories.find(
-          (item) => item.id === parseInt(id)
-        );
+        const id = parseInt(e.currentTarget.dataset.id);
+        const selected = this.allCategories.find((item) => item.id === id);
         this.EditId = id;
         categoryTitle.value = selected.title;
         categoryDescription.value = selected.description;
