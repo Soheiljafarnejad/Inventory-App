@@ -1,17 +1,18 @@
 import ProductView from "./ProductView.js";
 import Storage from "./Storage.js";
 import Toggle from "./Toggle.js";
-
+const categoryFromTitle = document.querySelector("#categoryFrom-title");
 const categoryList = document.querySelector("#categoryList");
 const categoryTitle = document.querySelector("#category-title");
 const categoryDescription = document.querySelector("#category-description");
 const addBtn = document.querySelector("#category-add");
-const categoryListTitle = document.querySelector("#categoryListTitle");
+const categoryOptionTitle = document.querySelector("#categoryOptionTitle");
 
 class CategoryView {
   constructor() {
     addBtn.addEventListener("click", (e) => this.addNewCategory(e));
     this.allCategories = Storage.getAllCategories();
+    this.EditId = null;
     this.checkedOption();
   }
   addNewCategory(e) {
@@ -22,12 +23,24 @@ class CategoryView {
       categoryTitle.focus();
       return;
     }
-    Storage.saveCategories({ title, description });
+    if (this.EditId) {
+      Storage.saveCategories({ title, description, id: this.EditId });
+      ProductView.sortProduct();
+    } else Storage.saveCategories({ title, description });
+
     Toggle.exitCategory();
     this.allCategories = Storage.getAllCategories();
+    this.checkedOption();
     this.creatCategoryList();
+    this.resetCategoryForm();
+  }
+
+  resetCategoryForm() {
     categoryTitle.value = "";
     categoryDescription.value = "";
+    this.EditId = null;
+    addBtn.innerText = "اضافه کردن";
+    categoryFromTitle.innerText = "دسته بندی جدید";
   }
 
   creatCategoryList() {
@@ -78,7 +91,9 @@ class CategoryView {
     categoryList.innerHTML = result;
     this.selectCategory();
     this.deleteCategory();
+    this.editCategory();
   }
+
   selectCategory() {
     const allOptions = [...document.querySelectorAll(".categoryOptions")];
     allOptions.forEach((option) => {
@@ -95,9 +110,9 @@ class CategoryView {
       (item) => item.id === parseInt(id)
     );
     if (selected) {
-      categoryListTitle.innerText = selected.title;
+      categoryOptionTitle.innerText = selected.title;
     } else {
-      categoryListTitle.innerText = "انتخاب دسته بندی";
+      categoryOptionTitle.innerText = "انتخاب دسته بندی";
     }
   }
   deleteCategory() {
@@ -109,10 +124,29 @@ class CategoryView {
         Storage.deleteCategoryProducts(id);
         Storage.deleteCategories(id);
         categoryList.dataset.id = null;
-        this.checkedOption()
+        this.checkedOption();
         ProductView.sortProduct();
         this.allCategories = Storage.getAllCategories();
         this.creatCategoryList();
+      });
+    });
+  }
+
+  editCategory() {
+    const editBtns = document.querySelectorAll(".edit-category");
+    editBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = e.currentTarget.dataset.id;
+        const selected = this.allCategories.find(
+          (item) => item.id === parseInt(id)
+        );
+        this.EditId = id;
+        categoryTitle.value = selected.title;
+        categoryDescription.value = selected.description;
+        Toggle.showCategory();
+        categoryFromTitle.innerText = "ویرایش دسته بندی";
+        addBtn.innerText = "ویرایش کردن";
       });
     });
   }

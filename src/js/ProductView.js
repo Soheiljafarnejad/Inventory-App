@@ -34,14 +34,13 @@ class ProductView {
       return;
     } else if (!category || category === "null") return;
 
-    if (this.EditId) {
+    if (this.EditId)
       Storage.saveProducts({ title, quantity, category, id: this.EditId });
-    } else {
-      Storage.saveProducts({ title, quantity, category });
-    }
+    else Storage.saveProducts({ title, quantity, category });
 
     Toggle.exitProduct();
     this.sortProduct();
+    this.resetProductForm();
   }
 
   resetProductForm() {

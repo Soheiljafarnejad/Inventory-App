@@ -1,3 +1,4 @@
+import CategoryView from "./CategoryView.js";
 import ProductView from "./ProductView.js";
 
 const searchBox = document.querySelector("#search-box");
@@ -12,13 +13,20 @@ const formCategory = document.querySelector("#form-category");
 class Toggle {
   constructor() {
     searchToggle.addEventListener("click", this.searchHandlerToggle);
-
-    productToggle.addEventListener("click", this.showProduct);
+    // productToggle
+    productToggle.addEventListener("click", () => {
+      this.showProduct();
+      ProductView.resetProductForm();
+    });
     document
       .querySelector("#exit-form-product")
       .addEventListener("click", this.exitProduct);
 
-    categoryToggle.addEventListener("click", this.showCategory);
+    // categoryToggle
+    categoryToggle.addEventListener("click", () => {
+      this.showCategory();
+      CategoryView.resetCategoryForm();
+    });
     document
       .querySelector("#exit-form-category")
       .addEventListener("click", this.exitCategory);
@@ -38,11 +46,10 @@ class Toggle {
     formProduct.classList.add("fixed");
     document.querySelector("#product-title").focus();
   };
-  
+
   exitProduct = () => {
     formProduct.classList.add("hidden");
     formProduct.classList.remove("fixed");
-    ProductView.resetProductForm();
   };
 
   // category form toggle
