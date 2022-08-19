@@ -526,6 +526,19 @@ select:focus{
     line-height: 1.5rem;
   }
 }
+html{
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+  font-size: .85rem;
+}
+body{
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+}
 *, ::before, ::after{
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -861,6 +874,10 @@ select:focus{
 .clear-none{
   clear: none;
 }
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -868,10 +885,6 @@ select:focus{
 .mx-2{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-}
-.mx-auto{
-  margin-left: auto;
-  margin-right: auto;
 }
 .mb-4{
   margin-bottom: 1rem;
@@ -882,11 +895,8 @@ select:focus{
 .mb-1{
   margin-bottom: 0.25rem;
 }
-.mr-0\.5{
-  margin-right: 0.125rem;
-}
-.mr-0{
-  margin-right: 0px;
+.mr-3{
+  margin-right: 0.75rem;
 }
 .mt-2{
   margin-top: 0.5rem;
@@ -905,12 +915,6 @@ select:focus{
 }
 .mt-0{
   margin-top: 0px;
-}
-.mr-2{
-  margin-right: 0.5rem;
-}
-.mr-3{
-  margin-right: 0.75rem;
 }
 .box-border{
   box-sizing: border-box;
@@ -1019,6 +1023,9 @@ select:focus{
 }
 .w-3{
   width: 0.75rem;
+}
+.max-w-\[1600px\]{
+  max-width: 1600px;
 }
 .max-w-xl{
   max-width: 36rem;
@@ -1893,9 +1900,6 @@ select:focus{
 .p-2{
   padding: 0.5rem;
 }
-.p-2\.5{
-  padding: 0.625rem;
-}
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1956,15 +1960,23 @@ select:focus{
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
-.px-3{
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
 .pl-2{
   padding-left: 0.5rem;
 }
 .pl-32{
   padding-left: 8rem;
+}
+.pl-3{
+  padding-left: 0.75rem;
+}
+.pl-28{
+  padding-left: 7rem;
+}
+.pl-20{
+  padding-left: 5rem;
+}
+.pl-16{
+  padding-left: 4rem;
 }
 .text-left{
   text-align: left;
@@ -2433,6 +2445,15 @@ select:focus{
 }
 .\[content\:\"hello\"\]{
   content: "hello";
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .hover\:bg-gray-50:hover{

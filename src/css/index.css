@@ -23,4 +23,21 @@
   select {
     @apply rounded-md border-gray-200 w-auto transition-all duration-200 border-0 outline-none ring-0 bg-gray-200 focus:bg-white focus:ring-0 focus:border-0 py-2 text-sm md:text-base;
   }
+
+  html {
+    @apply !select-none text-[.85rem];
+  }
+  body {
+    @apply !select-none;
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

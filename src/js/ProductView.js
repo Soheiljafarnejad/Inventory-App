@@ -96,7 +96,7 @@ class ProductView {
       <div x-show="open" class="bg-white z-10 absolute flex flex-col -left-2 top-8 rounded-md border border-gray-200 overflow-hidden">
       <button
       data-id=${item.id}
-        class="delete-product hover:bg-gray-50 py-2.5 pl-32 px-2 text-sm text-red-500 border-b border-gray-200 flex items-center justify-start gap-x-1"
+        class="delete-product hover:bg-gray-50 py-2.5 pl-16 px-2 text-sm text-red-500 border-b border-gray-200 flex items-center justify-start gap-x-1"
       >
       <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ class ProductView {
       </button>
       <button
       data-id=${item.id}
-        class="edit-product hover:bg-gray-50 py-2.5 pl-32 px-2 text-sm flex items-center justify-start gap-x-1"
+        class="edit-product hover:bg-gray-50 py-2.5 pl-16 px-2 text-sm flex items-center justify-start gap-x-1"
       >
       <svg
       xmlns="http://www.w3.org/2000/svg"
